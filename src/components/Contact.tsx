@@ -117,7 +117,7 @@ const Contact = () => {
                   
                   <Button 
                     type="submit" 
-                    className="w-full bg-accent hover:bg-accent/90 text-white transition-smooth"
+                    className="w-full bg-accent hover:bg-accent/90 text-accent-foreground transition-smooth"
                     size="lg"
                   >
                     Отправить заявку
@@ -139,8 +139,7 @@ const Contact = () => {
                         Следите за нашими блюдами и акциями
                       </p>
                       <Button 
-                        variant="outline" 
-                        className="border-accent text-accent hover:bg-accent hover:text-white"
+                        className="bg-accent hover:bg-accent/90 text-accent-foreground"
                         asChild
                       >
                         <a 
@@ -168,8 +167,7 @@ const Contact = () => {
                         Присоединяйтесь к нашему сообществу
                       </p>
                       <Button 
-                        variant="outline" 
-                        className="border-secondary text-secondary hover:bg-secondary hover:text-white"
+                        className="bg-secondary hover:bg-secondary/90 text-secondary-foreground"
                         asChild
                       >
                         <a 
