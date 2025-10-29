@@ -1,59 +1,8 @@
-import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Instagram, MessageCircle } from "lucide-react";
-import { useToast } from "@/hooks/use-toast";
-import { z } from "zod";
-
-const contactSchema = z.object({
-  name: z.string().trim().min(1, "Имя обязательно").max(100),
-  contact: z.string().trim().min(1, "Контакт обязателен").max(255),
-  eventDate: z.string().trim().min(1, "Дата события обязательна"),
-  message: z.string().trim().min(1, "Сообщение обязательно").max(1000)
-});
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    contact: "",
-    eventDate: "",
-    message: ""
-  });
-  const { toast } = useToast();
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    try {
-      contactSchema.parse(formData);
-      
-      const whatsappMessage = encodeURIComponent(
-        `Здравствуйте! Меня зовут ${formData.name}.\n\nКонтакт: ${formData.contact}\nДата события: ${formData.eventDate}\n\nСообщение: ${formData.message}`
-      );
-      
-      window.open(
-        `https://wa.me/34${formData.contact.replace(/\D/g, '')}?text=${whatsappMessage}`,
-        '_blank'
-      );
-      
-      toast({
-        title: "Отлично!",
-        description: "Перенаправляем вас в WhatsApp для завершения заказа.",
-      });
-      
-      setFormData({ name: "", contact: "", eventDate: "", message: "" });
-    } catch (error) {
-      if (error instanceof z.ZodError) {
-        toast({
-          title: "Ошибка",
-          description: error.errors[0].message,
-          variant: "destructive"
-        });
-      }
-    }
-  };
 
   return (
     <section id="contact" className="py-20 bg-background">
@@ -68,65 +17,7 @@ const Contact = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
-            <Card className="bg-card border-border shadow-medium">
-              <CardHeader>
-                <CardTitle className="text-2xl">Форма заказа</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  <div>
-                    <Input
-                      placeholder="Ваше имя"
-                      value={formData.name}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="bg-background border-input"
-                      maxLength={100}
-                    />
-                  </div>
-                  
-                  <div>
-                    <Input
-                      placeholder="Телефон или Email"
-                      value={formData.contact}
-                      onChange={(e) => setFormData({ ...formData, contact: e.target.value })}
-                      className="bg-background border-input"
-                      maxLength={255}
-                    />
-                  </div>
-                  
-                  <div>
-                    <Input
-                      type="date"
-                      placeholder="Дата события"
-                      value={formData.eventDate}
-                      onChange={(e) => setFormData({ ...formData, eventDate: e.target.value })}
-                      className="bg-background border-input"
-                    />
-                  </div>
-                  
-                  <div>
-                    <Textarea
-                      placeholder="Расскажите о вашем мероприятии..."
-                      value={formData.message}
-                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      className="bg-background border-input min-h-[120px]"
-                      maxLength={1000}
-                    />
-                  </div>
-                  
-                  <Button 
-                    type="submit" 
-                    className="w-full bg-accent hover:bg-accent/90 text-accent-foreground transition-smooth"
-                    size="lg"
-                  >
-                    Отправить заявку
-                  </Button>
-                </form>
-              </CardContent>
-            </Card>
-
-            <div className="space-y-6">
+          <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
               <Card className="bg-card border-border shadow-medium hover-lift">
                 <CardContent className="p-6">
                   <div className="flex items-start gap-4">
@@ -182,17 +73,18 @@ const Contact = () => {
                   </div>
                 </CardContent>
               </Card>
+          </div>
 
-              <Card className="bg-secondary/10 border-secondary/20">
-                <CardContent className="p-6">
-                  <p className="text-sm text-muted-foreground text-center">
-                    📍 Обслуживаем Costa Blanca<br />
-                    🥩 Магазин «Оазис» в Кальпе<br />
-                    🚚 Доставка по всему региону
-                  </p>
-                </CardContent>
-              </Card>
-            </div>
+          <div className="mt-12 text-center">
+            <Card className="bg-secondary/10 border-secondary/20 max-w-xl mx-auto">
+              <CardContent className="p-6">
+                <p className="text-sm text-muted-foreground">
+                  📍 Обслуживаем Costa Blanca<br />
+                  🥩 Магазин «Оазис» в Кальпе<br />
+                  🚚 Доставка по всему региону
+                </p>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </div>
