@@ -7,13 +7,19 @@ import dish4 from "@/assets/dish4.jpg";
 import dish5 from "@/assets/dish5.jpg";
 import dish6 from "@/assets/dish6.jpg";
 
+// To add more dishes:
+// 1. Add your image file to src/assets/ (e.g., dish7.jpg)
+// 2. Import it above: import dish7 from "@/assets/dish7.jpg";
+// 3. Add it to imageMap below: dish7,
+// 4. Add the dish entry to website-config.json with the key "dish7"
 const imageMap: Record<string, string> = {
   dish1,
   dish2,
   dish3,
   dish4,
   dish5,
-  dish6
+  dish6,
+  // Add more images here as you import them
 };
 
 const Gallery = () => {

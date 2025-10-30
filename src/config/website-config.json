@@ -95,7 +95,8 @@
         "name": "Самса",
         "caption": "Хрустящая самса с мясом"
       }
-    ]
+    ],
+    "_instructions": "To add more dishes: 1) Add image to src/assets/ (e.g. dish7.jpg), 2) Add to imageMap in Gallery.tsx, 3) Add entry here with the image key"
   },
   "testimonials": {
     "title": "Отзывы клиентов",
