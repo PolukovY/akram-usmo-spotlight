@@ -1,32 +1,16 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { ChefHat, Truck, ShoppingBag, Utensils } from "lucide-react";
+import { ChefHat, Truck, ShoppingBag, Utensils, UtensilsCrossed, Users, Store } from "lucide-react";
+import config from "@/config/website-config.json";
 
-const services = [
-  {
-    icon: ChefHat,
-    emoji: "👨🏽‍🍳",
-    title: "Кейтеринг",
-    description: "Профессиональное обслуживание мероприятий любого масштаба. От семейных праздников до корпоративных событий."
-  },
-  {
-    icon: Truck,
-    emoji: "🚚",
-    title: "Доставка",
-    description: "Свежие восточные блюда с доставкой по всей Costa Blanca. Быстро, вкусно, удобно."
-  },
-  {
-    icon: ShoppingBag,
-    emoji: "🥩",
-    title: "Магазин «Оазис»",
-    description: "Мясной магазин в Кальпе с отборным мясом высшего качества для приготовления настоящих восточных блюд."
-  },
-  {
-    icon: Utensils,
-    emoji: "🍚",
-    title: "Плов-пикники",
-    description: "Незабываемые кулинарные мероприятия на природе. Свежий плов, приготовленный на открытом огне."
-  }
-];
+const iconMap: Record<string, any> = {
+  ChefHat,
+  Truck,
+  ShoppingBag,
+  Utensils,
+  UtensilsCrossed,
+  Users,
+  Store
+};
 
 const Services = () => {
   return (
@@ -34,16 +18,16 @@ const Services = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16 animate-fade-in-up">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">
-            Наши услуги
+            Наші послуги
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Полный спектр кулинарных услуг для вашего удобства
+            Повний спектр кулінарних послуг для вашої зручності
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
-          {services.map((service, index) => {
-            const Icon = service.icon;
+          {config.services.map((service: any, index: number) => {
+            const Icon = iconMap[service.icon];
             return (
               <Card 
                 key={index} 

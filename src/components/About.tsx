@@ -1,4 +1,5 @@
 import { ChefHat } from "lucide-react";
+import config from "@/config/website-config.json";
 
 const About = () => {
   return (
@@ -10,30 +11,13 @@ const About = () => {
           </div>
           
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
-            О шеф-поваре
+            {config.about.title}
           </h2>
           
           <div className="space-y-4 text-lg text-muted-foreground leading-relaxed">
-            <p>
-              🌴 <strong>Самые вкусные Восточные блюда</strong> на побережье Коста Бланка. 
-              Я предлагаю аутентичную кухню с заботой о качестве каждого ингредиента.
-            </p>
-            
-            <p>
-              С многолетним опытом работы выездным поваром в Испании, я специализируюсь 
-              на традиционных восточных блюдах — от ароматного плова до сочных шашлыков 
-              и кебабов, приготовленных по семейным рецептам.
-            </p>
-            
-            <p>
-              Обслуживаю весь регион Коста Бланка, включая Кальпе, Альтею, Бениссу, 
-              Морайру и окрестности. Каждое мероприятие — это возможность подарить 
-              гостям незабываемые вкусовые впечатления.
-            </p>
-            
-            <p className="text-2xl">
-              😍 Довольные гости — моя лучшая награда!
-            </p>
+            {config.about.description.map((paragraph: string, index: number) => (
+              <p key={index}>{paragraph}</p>
+            ))}
           </div>
         </div>
       </div>

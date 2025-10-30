@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Instagram, MessageCircle } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
+import config from "@/config/website-config.json";
 
 const Hero = () => {
   return (
@@ -16,10 +17,10 @@ const Hero = () => {
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 text-center animate-fade-in">
         <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-4 tracking-tight">
-          Akram Usmo
+          {config.hero.title}
         </h1>
         <p className="text-xl md:text-2xl lg:text-3xl text-white/90 mb-8 font-light">
-          ВЫЕЗДНОЙ ПОВАР • ИСПАНИЯ • ДОСТАВКА • PLOVBAR_COSTA
+          {config.hero.subtitle}
         </p>
         
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-12">
@@ -29,13 +30,13 @@ const Hero = () => {
             asChild
           >
             <a 
-              href="https://www.instagram.com/akram_usmo/" 
+              href={config.hero.instagram.url}
               target="_blank" 
               rel="noopener noreferrer"
               className="flex items-center gap-2"
             >
               <Instagram className="h-5 w-5" />
-              Instagram
+              {config.hero.instagram.text}
             </a>
           </Button>
           
@@ -45,13 +46,13 @@ const Hero = () => {
             asChild
           >
             <a 
-              href="https://chat.whatsapp.com/L6DmLEXWU9MHkp55NVsoWy" 
+              href={config.hero.whatsapp.url}
               target="_blank" 
               rel="noopener noreferrer"
               className="flex items-center gap-2"
             >
               <MessageCircle className="h-5 w-5" />
-              Join WhatsApp
+              {config.hero.whatsapp.text}
             </a>
           </Button>
         </div>

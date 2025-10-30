@@ -1,23 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Star } from "lucide-react";
-
-const testimonials = [
-  {
-    name: "Мария С.",
-    text: "Заказывали кейтеринг на семейный праздник. Все гости в восторге! Плов был невероятно вкусным, а шашлык просто тает во рту. Спасибо!",
-    rating: 5
-  },
-  {
-    name: "Хуан Р.",
-    text: "Mejor chef de cocina oriental en Costa Blanca. El pilaf es auténtico y delicioso. Servicio profesional y amable.",
-    rating: 5
-  },
-  {
-    name: "Elena K.",
-    text: "Регулярно заказываем доставку. Всегда свежее, всегда вкусно, всегда вовремя. Рекомендую магазин Оазис — отличное мясо!",
-    rating: 5
-  }
-];
+import config from "@/config/website-config.json";
 
 const Testimonials = () => {
   return (
@@ -25,15 +8,15 @@ const Testimonials = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16 animate-fade-in-up">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">
-            😍 Довольные гости
+            {config.testimonials.title}
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Что говорят наши клиенты
+            {config.testimonials.subtitle}
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-          {testimonials.map((testimonial, index) => (
+          {config.testimonials.items.map((testimonial: any, index: number) => (
             <Card 
               key={index}
               className="hover-lift bg-background border-border"

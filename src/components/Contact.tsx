@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Instagram, MessageCircle } from "lucide-react";
+import config from "@/config/website-config.json";
 
 const Contact = () => {
 
@@ -10,10 +11,10 @@ const Contact = () => {
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16 animate-fade-in-up">
             <h2 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">
-              Свяжитесь с нами
+              {config.contact.title}
             </h2>
             <p className="text-lg text-muted-foreground">
-              Готовы заказать незабываемое кулинарное событие?
+              {config.contact.subtitle}
             </p>
           </div>
 
@@ -25,20 +26,20 @@ const Contact = () => {
                       <Instagram className="h-6 w-6 text-accent" />
                     </div>
                     <div>
-                      <h3 className="font-bold text-lg mb-2">Instagram</h3>
+                      <h3 className="font-bold text-lg mb-2">{config.contact.instagram.title}</h3>
                       <p className="text-muted-foreground mb-3">
-                        Следите за нашими блюдами и акциями
+                        {config.contact.instagram.description}
                       </p>
                       <Button 
                         className="bg-accent hover:bg-accent/90 text-accent-foreground"
                         asChild
                       >
                         <a 
-                          href="https://www.instagram.com/akram_usmo/" 
+                          href={config.contact.instagram.url}
                           target="_blank" 
                           rel="noopener noreferrer"
                         >
-                          Подписаться
+                          {config.contact.instagram.buttonText}
                         </a>
                       </Button>
                     </div>
@@ -53,20 +54,20 @@ const Contact = () => {
                       <MessageCircle className="h-6 w-6 text-secondary" />
                     </div>
                     <div>
-                      <h3 className="font-bold text-lg mb-2">WhatsApp</h3>
+                      <h3 className="font-bold text-lg mb-2">{config.contact.whatsapp.title}</h3>
                       <p className="text-muted-foreground mb-3">
-                        Присоединяйтесь к нашему сообществу
+                        {config.contact.whatsapp.description}
                       </p>
                       <Button 
                         className="bg-secondary hover:bg-secondary/90 text-secondary-foreground"
                         asChild
                       >
                         <a 
-                          href="https://chat.whatsapp.com/L6DmLEXWU9MHkp55NVsoWy" 
+                          href={config.contact.whatsapp.url}
                           target="_blank" 
                           rel="noopener noreferrer"
                         >
-                          Присоединиться
+                          {config.contact.whatsapp.buttonText}
                         </a>
                       </Button>
                     </div>
@@ -79,9 +80,12 @@ const Contact = () => {
             <Card className="bg-secondary/10 border-secondary/20 max-w-xl mx-auto">
               <CardContent className="p-6">
                 <p className="text-sm text-muted-foreground">
-                  📍 Обслуживаем Costa Blanca<br />
-                  🥩 Магазин «Оазис» в Кальпе<br />
-                  🚚 Доставка по всему региону
+                  {config.contact.location.lines.map((line, index) => (
+                    <span key={index}>
+                      {line}
+                      {index < config.contact.location.lines.length - 1 && <br />}
+                    </span>
+                  ))}
                 </p>
               </CardContent>
             </Card>

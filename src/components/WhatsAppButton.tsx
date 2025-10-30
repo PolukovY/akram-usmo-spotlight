@@ -1,10 +1,11 @@
 import { MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import config from "@/config/website-config.json";
 
 const WhatsAppButton = () => {
   return (
     <a
-      href="https://chat.whatsapp.com/L6DmLEXWU9MHkp55NVsoWy"
+      href={config.hero.whatsapp.url}
       target="_blank"
       rel="noopener noreferrer"
       className="fixed bottom-6 right-6 z-50 animate-scale-in"

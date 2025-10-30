@@ -1,16 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card";
-
-const menuItems = [
-  { name: "Плов", price: "€12.00", icon: "🍚" },
-  { name: "Самса", price: "€5.00", icon: "🥟" },
-  { name: "Чебуреки", price: "€4.00", icon: "🥙" },
-  { name: "Беляши (мясо)", price: "€2.50", icon: "🥩" },
-  { name: "Беляши (картошка)", price: "€2.00", icon: "🥔" },
-  { name: "Манты (1 шт.)", price: "€4.00", icon: "🥟" },
-  { name: "Замороженные перцы, голубцы (1 кг)", price: "€20.00", icon: "🫑" },
-  { name: "Осетрина (1 кг)", price: "€16.00", icon: "🐟" },
-  { name: "Икра (250 г)", price: "€30.00", icon: "🥚" }
-];
+import config from "@/config/website-config.json";
 
 const Menu = () => {
   return (
@@ -19,15 +8,15 @@ const Menu = () => {
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16 animate-fade-in-up">
             <h2 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">
-              Меню и цены
+              {config.menu.title}
             </h2>
             <p className="text-lg text-muted-foreground">
-              Аутентичные восточные блюда с доставкой
+              {config.menu.subtitle}
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {menuItems.map((item, index) => (
+            {config.menu.items.map((item, index) => (
               <Card 
                 key={index} 
                 className="bg-card border-border shadow-medium hover-lift"
@@ -52,7 +41,7 @@ const Menu = () => {
 
           <div className="mt-8 text-center">
             <p className="text-muted-foreground text-sm">
-              💬 Для заказа свяжитесь с нами через WhatsApp или Instagram
+              {config.menu.footer}
             </p>
           </div>
         </div>
